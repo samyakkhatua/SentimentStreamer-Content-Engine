@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from enum import Enum
 import random
-from pydantic import BaseModel
+from pydantic import BaseModel 
 from typing import List, Dict
 
 app = FastAPI()
@@ -14,279 +14,312 @@ class AvailableOptions(str, Enum):
     surprised = "surprised"
     angry = "angry"
     fear = "fear"
+    
 
 class MoodResponse(BaseModel):
     mood: AvailableOptions
-    videos: List[str]
     playlists: List[str]
+    videos: List[str]
     articles:List[str]
     suggestions:List[str]
     
 
 emotions = {
     'happy': [
-        "Happy Upbeat Music: https://www.youtube.com/watch?v=ZbZSe6N_BXs",
-        "Feel Good Songs: https://www.youtube.com/watch?v=PT2_F-1esPk",
-        "Uplifting Pop Hits: https://www.youtube.com/watch?v=JGwWNGJdvx8",
-        "Joyful Dance Music: https://www.youtube.com/watch?v=VbfpW0pbvaU",
-        "Positive Energy Playlist: https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
-        "Happy Acoustic Songs: https://www.youtube.com/watch?v=K0ibBPhiaG0",
-        "Cheerful Indie Music: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Feel Good Music Mix: https://www.youtube.com/watch?v=hT_nvWreIhg",
-        "Joyful Pop Songs: https://www.youtube.com/watch?v=fRh_vgS2dFE",
-        "Happy Vibes Playlist: https://www.youtube.com/watch?v=QjoJMQs7Mmw",
-        "Upbeat Songs for a Good Mood: https://www.youtube.com/watch?v=wXhTHyIgQ_U",
-        "Positive Thinking Music: https://www.youtube.com/watch?v=k7s68X4AtpE",
-        "Feel Good Dance Music: https://www.youtube.com/watch?v=PT2_F-1esPk",
-        "Joyful Acoustic Guitar: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Happy Pop Music: https://www.youtube.com/watch?v=fRh_vgS2dFE",
-        "Cheerful Tunes Playlist: https://www.youtube.com/watch?v=JGwWNGJdvx8",
-        "Upbeat Indie Pop: https://www.youtube.com/watch?v=wXhTHyIgQ_U",
-        "Positive Vibes Songs: https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
-        "Feel Good Electro Music: https://www.youtube.com/watch?v=hT_nvWreIhg",
-        "Joyful Songs Mix: https://www.youtube.com/watch?v=VbfpW0pbvaU",
-        "Happy Chill Music: https://www.youtube.com/watch?v=QjoJMQs7Mmw",
-        "Uplifting Instrumental Music: https://www.youtube.com/watch?v=ZbZSe6N_BXs",
-        "Positive Mood Music: https://www.youtube.com/watch?v=PT2_F-1esPk",
-        "Feel Good Pop Hits: https://www.youtube.com/watch?v=fRh_vgS2dFE",
-        "Joyful Background Music: https://www.youtube.com/watch?v=K0ibBPhiaG0",
-        "Happy Indie Songs: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Upbeat Music for a Good Mood: https://www.youtube.com/watch?v=wXhTHyIgQ_U",
-        "Positive Energy Music: https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
-        "Feel Good Acoustic Music: https://www.youtube.com/watch?v=K0ibBPhiaG0",
-        "Joyful Pop Hits: https://www.youtube.com/watch?v=VbfpW0pbvaU",
-        "Happy Songs Playlist: https://www.youtube.com/watch?v=QjoJMQs7Mmw",
-        "Uplifting Acoustic Guitar: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Positive Vibes Music: https://www.youtube.com/watch?v=hT_nvWreIhg",
-        "Feel Good Indie Music: https://www.youtube.com/watch?v=fRh_vgS2dFE",
-        "Joyful Dance Hits: https://www.youtube.com/watch?v=JGwWNGJdvx8",
-        "Happy Pop Songs: https://www.youtube.com/watch?v=wXhTHyIgQ_U",
-        "Upbeat Chill Music: https://www.youtube.com/watch?v=PT2_F-1esPk",
-        "Positive Thinking Songs: https://www.youtube.com/watch?v=k7s68X4AtpE",
-        "Feel Good Playlist: https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
-        "Joyful Electro Music: https://www.youtube.com/watch?v=hT_nvWreIhg",
-        "Happy Indie Pop: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Upbeat Music Mix: https://www.youtube.com/watch?v=fRh_vgS2dFE",
-        "Positive Vibes Playlist: https://www.youtube.com/watch?v=VbfpW0pbvaU",
-        "Feel Good Songs Playlist: https://www.youtube.com/watch?v=QjoJMQs7Mmw",
-        "Joyful Acoustic Music: https://www.youtube.com/watch?v=K0ibBPhiaG0",
-        "Happy Vibes Music: https://www.youtube.com/watch?v=wXhTHyIgQ_U",
-        "Upbeat Pop Songs: https://www.youtube.com/watch?v=JGwWNGJdvx8",
-        "Positive Mood Playlist: https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
-        "Feel Good Dance Songs: https://www.youtube.com/watch?v=VbfpW0pbvaU",
-        "Joyful Pop Music: https://www.youtube.com/watch?v=fRh_vgS2dFE",
+       "https://www.youtube.com/watch?v=ZbZSe6N_BXs",
+        "https://www.youtube.com/watch?v=PT2_F-1esPk",
+        "https://www.youtube.com/watch?v=JGwWNGJdvx8",
+        "https://www.youtube.com/watch?v=VbfpW0pbvaU",
+        "https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
+        "https://www.youtube.com/watch?v=K0ibBPhiaG0",
+        "https://youtu.be/ljnGl5nvUJY?si=TOd_v0VmwiF5RHgo",
+        "https://www.youtube.com/watch?v=hT_nvWreIhg",
+        "https://www.youtube.com/watch?v=fRh_vgS2dFE",
+        "https://youtu.be/3wlO4lpCHl8?si=RhE8Yu-_CaxE-DLv",
+        "https://www.youtube.com/watch?v=wXhTHyIgQ_U",
+        "https://youtu.be/0-OY5w20E10?si=mjraQYdRgxOog8pg",
+        "https://www.youtube.com/watch?v=PT2_F-1esPk",
+        "https://youtu.be/GsrIZ1mnOvU?si=FGL8_em8S895_TS4",
+        "https://www.youtube.com/watch?v=fRh_vgS2dFE",
+        "https://www.youtube.com/watch?v=JGwWNGJdvx8",
+        "https://www.youtube.com/watch?v=wXhTHyIgQ_U",
+        "https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
+        "https://www.youtube.com/watch?v=hT_nvWreIhg",
+        "https://www.youtube.com/watch?v=VbfpW0pbvaU",
+        "https://www.youtube.com/watch?v=QjoJMQs7Mmw",
+        "https://www.youtube.com/watch?v=ZbZSe6N_BXs",
+        "https://www.youtube.com/watch?v=PT2_F-1esPk",
+        "https://www.youtube.com/watch?v=fRh_vgS2dFE",
+        "https://www.youtube.com/watch?v=K0ibBPhiaG0",
+        "https://youtu.be/OBYjju4X0y0?si=C2V3pomt-fI8AwyL",
+        "https://www.youtube.com/watch?v=wXhTHyIgQ_U",
+        "https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
+        "https://www.youtube.com/watch?v=K0ibBPhiaG0",
+        "https://www.youtube.com/watch?v=VbfpW0pbvaU",
+        "https://youtu.be/OcmcptbsvzQ?si=U8vzBItTNuVy4g2O",
+        "https://youtu.be/9sYIGt1gOBc?si=fAfqNj6KVhVc6Z6A",
+        "https://www.youtube.com/watch?v=hT_nvWreIhg",
+        "https://www.youtube.com/watch?v=fRh_vgS2dFE",
+        "https://www.youtube.com/watch?v=JGwWNGJdvx8",
+        "https://www.youtube.com/watch?v=wXhTHyIgQ_U",
+        "https://www.youtube.com/watch?v=PT2_F-1esPk",
+        "https://youtu.be/CpNBODqTA34?si=9iYT8n5ct0XqN9bf",
+        "https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
+        "https://www.youtube.com/watch?v=hT_nvWreIhg",
+        "https://www.youtube.com/watch?v=2gMIi7C2DdE",
+        "https://www.youtube.com/watch?v=fRh_vgS2dFE",
+        "https://youtu.be/9bZkp7q19f0?si=fS4m95NC6UcLnfqK"
     ],
     'sad': [
-        "Sad Piano Music: https://www.youtube.com/watch?v=lFcSrYw-ARY",
-        "Melancholic Acoustic Songs: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Emotional Piano Music: https://www.youtube.com/watch?v=QZbuj3RJcdc",
-        "Sad Instrumental Music: https://www.youtube.com/watch?v=hHW1oY26kxQ",
-        "Sad Indie Songs: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Melancholic Classical Music: https://www.youtube.com/watch?v=QxHkLdQy5f0",
-        "Emotional Acoustic Music: https://www.youtube.com/watch?v=K0ibBPhiaG0",
-        "Sad Jazz Music: https://www.youtube.com/watch?v=KQU7ntT5mbQ",
-        "Sad Love Songs: https://www.youtube.com/watch?v=ZbZSe6N_BXs",
-        "Sad Guitar Music: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Emotional Classical Music: https://www.youtube.com/watch?v=QxHkLdQy5f0",
-        "Sad Ambient Music: https://www.youtube.com/watch?v=QZbuj3RJcdc",
-        "Sad Pop Songs: https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
-        "Emotional Indie Music: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Melancholic Instrumental Music: https://www.youtube.com/watch?v=hHW1oY26kxQ",
-        "Sad Piano Playlist: https://www.youtube.com/watch?v=lFcSrYw-ARY",
-        "Emotional Guitar Music: https://www.youtube.com/watch?v=K0ibBPhiaG0",
-        "Sad Classical Music Playlist: https://www.youtube.com/watch?v=QxHkLdQy5f0",
-        "Sad Jazz Playlist: https://www.youtube.com/watch?v=KQU7ntT5mbQ",
-        "Melancholic Acoustic Playlist: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Emotional Piano Playlist: https://www.youtube.com/watch?v=QZbuj3RJcdc",
-        "Sad Instrumental Playlist: https://www.youtube.com/watch?v=hHW1oY26kxQ",
-        "Sad Indie Playlist: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Melancholic Classical Playlist: https://www.youtube.com/watch?v=QxHkLdQy5f0",
-        "Emotional Acoustic Playlist: https://www.youtube.com/watch?v=K0ibBPhiaG0",
-        "Sad Jazz Mix: https://www.youtube.com/watch?v=KQU7ntT5mbQ",
-        "Sad Love Songs Mix: https://www.youtube.com/watch?v=ZbZSe6N_BXs",
-        "Melancholic Guitar Playlist: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Sad Piano Instrumentals: https://www.youtube.com/watch?v=lFcSrYw-ARY",
-        "Emotional Classical Playlist: https://www.youtube.com/watch?v=QxHkLdQy5f0",
-        "Sad Ambient Playlist: https://www.youtube.com/watch?v=QZbuj3RJcdc",
-        "Sad Pop Playlist: https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
-        "Melancholic Indie Music: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Emotional Instrumental Playlist: https://www.youtube.com/watch?v=hHW1oY26kxQ",
-        "Sad Piano Mix: https://www.youtube.com/watch?v=lFcSrYw-ARY",
-        "Melancholic Guitar Songs: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Emotional Classical Mix: https://www.youtube.com/watch?v=QxHkLdQy5f0",
-        "Sad Ambient Mix: https://www.youtube.com/watch?v=QZbuj3RJcdc",
-        "Sad Pop Songs Mix: https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
-        "Melancholic Indie Playlist: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Emotional Instrumental Mix: https://www.youtube.com/watch?v=hHW1oY26kxQ",
-        "Sad Piano Songs Mix: https://www.youtube.com/watch?v=lFcSrYw-ARY",
-        "Melancholic Classical Mix: https://www.youtube.com/watch?v=QxHkLdQy5f0",
-        "Emotional Guitar Playlist: https://www.youtube.com/watch?v=K0ibBPhiaG0",
-        "Sad Classical Music Mix: https://www.youtube.com/watch?v=QxHkLdQy5f0",
-        "Melancholic Jazz Music: https://www.youtube.com/watch?v=KQU7ntT5mbQ",
-        "Sad Indie Music Mix: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Emotional Love Songs: https://www.youtube.com/watch?v=ZbZSe6N_BXs",
-        "Melancholic Acoustic Mix: https://www.youtube.com/watch?v=2gMIi7C2DdE",
+         "https://www.youtube.com/watch?v=lFcSrYw-ARY",
+        "https://www.youtube.com/watch?v=hHW1oY26kxQ",
+        "https://www.youtube.com/watch?v=QxHkLdQy5f0",
+        "https://www.youtube.com/watch?v=K0ibBPhiaG0",
+        "https://www.youtube.com/watch?v=ZbZSe6N_BXs",
+        "https://www.youtube.com/watch?v=QxHkLdQy5f0",
+        "https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
+        "https://www.youtube.com/watch?v=hHW1oY26kxQ",
+        "https://www.youtube.com/watch?v=lFcSrYw-ARY",
+        "https://www.youtube.com/watch?v=K0ibBPhiaG0",
+        "https://www.youtube.com/watch?v=QxHkLdQy5f0",
+        "https://www.youtube.com/watch?v=hHW1oY26kxQ",
+        "https://www.youtube.com/watch?v=QxHkLdQy5f0",
+        "https://www.youtube.com/watch?v=K0ibBPhiaG0",
+        "https://www.youtube.com/watch?v=ZbZSe6N_BXs",
+        "https://www.youtube.com/watch?v=3ywhSlnTzC4",
+        "https://youtu.be/wQA68Oqr1qE?si=5D4Oh67EGW_uHXjw",
+        "https://youtu.be/9bZkp7q19f0?si=fS4m95NC6UcLnfqK",
+        "https://youtu.be/w-HYZv6HzAs?si=V1v5LK5xcgJ45m5e"
     ],
+
     'surprised': [
-        "https://www.youtube.com/watch"
+        "https://www.youtube.com/watch?v=gj3G8-vTbZA",
+    "https://www.youtube.com/watch?v=fC7oUOUEEi4",
+    "https://www.youtube.com/watch?v=k6DzujpFjAM",
+    "https://www.youtube.com/watch?v=AKCdlBIyX8E",
+    "https://www.youtube.com/watch?v=XG7oSqNC0mg",
+    "https://www.youtube.com/watch?v=2EwViQxSJJQ",
+    "https://www.youtube.com/watch?v=Ag1o3koTLWM",
+    "https://www.youtube.com/watch?v=_s_83n0U6R8",
+    "https://www.youtube.com/watch?v=sNaau_0PYqk",
+    "https://www.youtube.com/watch?v=Q9w6mCXRNGk",
+    "https://www.youtube.com/watch?v=RxT5NwQUtVM",
+    "https://www.youtube.com/watch?v=zqX4TW_WJ2I",
+    "https://www.youtube.com/watch?v=kdLGBgswQ1k",
+    "https://www.youtube.com/watch?v=L3fT_FZ4PAI",
+    "https://www.youtube.com/watch?v=vmYwv0VHZX4",
+    "https://www.youtube.com/watch?v=o_zBDpr2y_E",
+    "https://www.youtube.com/watch?v=-V7IwiYqZhg",
+    "https://www.youtube.com/watch?v=yQ-GgYqQFP8",
+    "https://www.youtube.com/watch?v=7Xnkm4s7Kik",
+    "https://www.youtube.com/watch?v=jmTgAlojN2I",
+    "https://www.youtube.com/watch?v=GH3kyoIziHQ",
+    "https://www.youtube.com/watch?v=LxL_kqGDRhM",
+    "https://www.youtube.com/watch?v=3cXtRcNz9W0",
+    "https://www.youtube.com/watch?v=DyMBgFgZb1o",
+    "https://www.youtube.com/watch?v=bEQTKHxD6Do",
+    "https://www.youtube.com/watch?v=O4Hb1V6zLKU",
+    "https://www.youtube.com/watch?v=gkTb9GP9lVI",
+    "https://www.youtube.com/watch?v=vL2wd_ML9Uk",
+    "https://www.youtube.com/watch?v=UgcMqdMk3Rk",
+    "https://www.youtube.com/watch?v=kvicFbAYg2s",
+    "https://www.youtube.com/watch?v=H6zQFQ6ocwc",
+    "https://www.youtube.com/watch?v=h2zjdoaEbQo",
+    "https://www.youtube.com/watch?v=wElWAl7mq80",
+    "https://www.youtube.com/watch?v=nY7GnAq6Znw",
+    "https://www.youtube.com/watch?v=YpRvOgYvQOs",
+    "https://www.youtube.com/watch?v=HTN6Du3MCgI",
+    "https://www.youtube.com/watch?v=fhVrMplb37U",
+    "https://www.youtube.com/watch?v=9z18onm7fwU",
+    "https://www.youtube.com/watch?v=5VOA7Ewvf9E",
+    "https://www.youtube.com/watch?v=5ff-UwsNvJY",
+    "https://www.youtube.com/watch?v=V-o0mKVsCc4",
+    "https://www.youtube.com/watch?v=s_f2zp84lzM",
+    "https://www.youtube.com/watch?v=6pohzONKpDU",
+    "https://www.youtube.com/watch?v=RCzQqtQJ7jw",
+    "https://www.youtube.com/watch?v=dTfJXb5iHV4",
+    "https://www.youtube.com/watch?v=RRp3jYpoZzQ",
+    "https://www.youtube.com/watch?v=gZS7gwh1F_E",
+    "https://www.youtube.com/watch?v=D5hNmBNeLgw",
+    "https://www.youtube.com/watch?v=w_2zg_nO0lI",
+     "https://www.youtube.com/watch?v=HRDVEVBEeIo",
+    "https://www.youtube.com/watch?v=3fyi6WYkGrQ",
+    "https://www.youtube.com/watch?v=n8zV3NEexBU",
+    "https://www.youtube.com/watch?v=qDuKsiwS5xw",
+    "https://www.youtube.com/watch?v=teItQ1ayvpg",
+    "https://www.youtube.com/watch?v=TwNhRUo2UU8",
+    "https://www.youtube.com/watch?v=3nsfK5XvOX0",
+    "https://www.youtube.com/watch?v=QDSWqVD4f1U",
+    "https://www.youtube.com/watch?v=8rwl2xgp3-g",
+    "https://www.youtube.com/watch?v=q21IKvCznfE",
+    "https://www.youtube.com/watch?v=gj3G8-vTbZA",
+    "https://www.youtube.com/watch?v=fC7oUOUEEi4",
+    "https://www.youtube.com/watch?v=k6DzujpFjAM",
+    "https://www.youtube.com/watch?v=AKCdlBIyX8E",
+    "https://www.youtube.com/watch?v=XG7oSqNC0mg",
+    "https://www.youtube.com/watch?v=2EwViQxSJJQ",
+    "https://www.youtube.com/watch?v=Ag1o3koTLWM",
+    "https://www.youtube.com/watch?v=_s_83n0U6R8",
+    "https://www.youtube.com/watch?v=sNaau_0PYqk",
+    "https://www.youtube.com/watch?v=Q9w6mCXRNGk",
+    "https://www.youtube.com/watch?v=RxT5NwQUtVM",
+    "https://www.youtube.com/watch?v=zqX4TW_WJ2I",
+    "https://www.youtube.com/watch?v=kdLGBgswQ1k",
+    "https://www.youtube.com/watch?v=L3fT_FZ4PAI",
+    "https://www.youtube.com/watch?v=vmYwv0VHZX4",
+    "https://www.youtube.com/watch?v=o_zBDpr2y_E",
+    "https://www.youtube.com/watch?v=-V7IwiYqZhg"
     ],
+
+    'fear':[
+    "https://www.youtube.com/watch?v=sOnqjkJTMaA",
+    "https://www.youtube.com/watch?v=Zi_XLOBDo_Y",
+    "https://www.youtube.com/watch?v=SFsHSHE-iJQ",
+    "https://www.youtube.com/watch?v=Wlo9X5pylKk",
+    "https://www.youtube.com/watch?v=8nI8lRXgbM0",
+    "https://www.youtube.com/watch?v=Xo8eOp3wFzM",
+    "https://www.youtube.com/watch?v=Qe3hZK2em_I",
+    "https://www.youtube.com/watch?v=lc8vpjkvN9I",
+    "https://www.youtube.com/watch?v=UwWYYB4g-Zg",
+    "https://www.youtube.com/watch?v=SpLjK57Cjs0",
+    "https://www.youtube.com/watch?v=dpq6C5fZ4Ko",
+    "https://www.youtube.com/watch?v=apvZ_JcsRhA",
+    "https://www.youtube.com/watch?v=JzHWYxoX2kA",
+    "https://www.youtube.com/watch?v=l60MnDJklnM",
+    "https://www.youtube.com/watch?v=OJLHM20CfJI",
+    "https://www.youtube.com/watch?v=UC8rJQdzqkU",
+    "https://www.youtube.com/watch?v=oz6V6nV9g48",
+    "https://www.youtube.com/watch?v=K4qyXkQwheI",
+    "https://www.youtube.com/watch?v=3yfPOzQJtIA",
+    "https://www.youtube.com/watch?v=0Kksz8v9AgI",
+    "https://www.youtube.com/watch?v=-b-xCTA3omA",
+    "https://www.youtube.com/watch?v=qnaLI2-mF3k",
+    "https://www.youtube.com/watch?v=uxjTgqNSy4M",
+    "https://www.youtube.com/watch?v=loDEbapbbZM",
+    "https://www.youtube.com/watch?v=0RU-ZZVk_b8",
+    "https://www.youtube.com/watch?v=aj65kEVnQow",
+    "https://www.youtube.com/watch?v=x2E38p4ESZk",
+    "https://www.youtube.com/watch?v=VXHvgBzFKN8",
+    "https://www.youtube.com/watch?v=0ARJZTnF_7g",
+    "https://www.youtube.com/watch?v=3cHyZPzEqY0",
+    "https://www.youtube.com/watch?v=46lheMr8_hk",
+    "https://www.youtube.com/watch?v=wyg_3rpMfLY",
+    "https://www.youtube.com/watch?v=D9dNksMWxw8",
+    "https://www.youtube.com/watch?v=mvvF6H_KY5I",
+    "https://www.youtube.com/watch?v=eyb3Oz3e3Yo",
+    "https://www.youtube.com/watch?v=qYsl3FnKuC0",
+    "https://www.youtube.com/watch?v=Vwn8e_BDbw4",
+    "https://www.youtube.com/watch?v=UCrMNV7XlxM",
+    "https://www.youtube.com/watch?v=ND7jgrfYuo8",
+    "https://www.youtube.com/watch?v=4cTC3vNFl2M",
+    "https://www.youtube.com/watch?v=oO9ov6bEwMY",
+    "https://www.youtube.com/watch?v=K0pvjM6LLjY",
+    "https://www.youtube.com/watch?v=4CPikS4URSE",
+    "https://www.youtube.com/watch?v=dE1DuBesGYM",
+    "https://www.youtube.com/watch?v=6HoUuUmfaKs",
+    "https://www.youtube.com/watch?v=3nQNiWdeH2Q",
+    "https://www.youtube.com/watch?v=-gu_rnUYs7g",
+    "https://www.youtube.com/watch?v=viSi-jUn9NU"
+    ],
+
     'excited': [
-        "High Energy Music: https://www.youtube.com/watch?v=hT_nvWreIhg",
-        "Workout Playlist: https://www.youtube.com/watch?v=PT2_F-1esPk",
-        "Energetic Dance Music: https://www.youtube.com/watch?v=JGwWNGJdvx8",
-        "Upbeat Pop Hits: https://www.youtube.com/watch?v=VbfpW0pbvaU",
-        "High Energy Workout Music: https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
-        "Energetic Rock Music: https://www.youtube.com/watch?v=wXhTHyIgQ_U",
-        "Pump Up Songs: https://www.youtube.com/watch?v=kXYiU_JCYtU",
-        "Energetic EDM: https://www.youtube.com/watch?v=hT_nvWreIhg",
-        "Workout Pop Hits: https://www.youtube.com/watch?v=PT2_F-1esPk",
-        "High Energy Dance Hits: https://www.youtube.com/watch?v=VbfpW0pbvaU",
-        "Energetic Pop Songs: https://www.youtube.com/watch?v=JGwWNGJdvx8",
-        "Upbeat Workout Music: https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
-        "High Energy Rock: https://www.youtube.com/watch?v=wXhTHyIgQ_U",
-        "Pump Up Playlist: https://www.youtube.com/watch?v=kXYiU_JCYtU",
-        "Energetic Dance Playlist: https://www.youtube.com/watch?v=hT_nvWreIhg",
-        "Workout Hits Mix: https://www.youtube.com/watch?v=PT2_F-1esPk",
-        "High Energy Pop Hits: https://www.youtube.com/watch?v=VbfpW0pbvaU",
-        "Energetic EDM Playlist: https://www.youtube.com/watch?v=JGwWNGJdvx8",
-        "Upbeat Rock Music: https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
-        "High Energy Workout Playlist: https://www.youtube.com/watch?v=wXhTHyIgQ_U",
-        "Energetic Pop Hits: https://www.youtube.com/watch?v=kXYiU_JCYtU",
-        "Pump Up Dance Music: https://www.youtube.com/watch?v=PT2_F-1esPk",
-        "High Energy EDM: https://www.youtube.com/watch?v=hT_nvWreIhg",
-        "Energetic Workout Hits: https://www.youtube.com/watch?v=VbfpW0pbvaU",
-        "Upbeat Pop Music: https://www.youtube.com/watch?v=JGwWNGJdvx8",
-        "High Energy Dance Playlist: https://www.youtube.com/watch?v=PT2_F-1esPk",
-        "Energetic Pop Playlist: https://www.youtube.com/watch?v=kXYiU_JCYtU",
-        "Pump Up Rock Music: https://www.youtube.com/watch?v=wXhTHyIgQ_U",
-        "High Energy Workout Mix: https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
-        "Energetic EDM Mix: https://www.youtube.com/watch?v=hT_nvWreIhg",
-        "Upbeat Dance Hits: https://www.youtube.com/watch?v=PT2_F-1esPk",
-        "High Energy Rock Playlist: https://www.youtube.com/watch?v=JGwWNGJdvx8",
-        "Energetic Pop Mix: https://www.youtube.com/watch?v=VbfpW0pbvaU",
-        "Pump Up Dance Playlist: https://www.youtube.com/watch?v=kXYiU_JCYtU",
-        "High Energy EDM Hits: https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
-        "Energetic Workout Mix: https://www.youtube.com/watch?v=wXhTHyIgQ_U",
-        "Upbeat Pop Playlist: https://www.youtube.com/watch?v=PT2_F-1esPk",
-        "High Energy Dance Mix: https://www.youtube.com/watch?v=JGwWNGJdvx8",
-        "Energetic Rock Playlist: https://www.youtube.com/watch?v=hT_nvWreIhg",
-        "Pump Up Workout Music: https://www.youtube.com/watch?v=VbfpW0pbvaU",
-        "High Energy Pop Music: https://www.youtube.com/watch?v=kXYiU_JCYtU",
-        "Energetic Dance Hits: https://www.youtube.com/watch?v=wXhTHyIgQ_U",
-        "Upbeat EDM: https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
-        "High Energy Workout Songs: https://www.youtube.com/watch?v=hT_nvWreIhg",
-        "Energetic Pop Dance: https://www.youtube.com/watch?v=PT2_F-1esPk",
-        "Pump Up Music Mix: https://www.youtube.com/watch?v=JGwWNGJdvx8",
-        "High Energy Rock Hits: https://www.youtube.com/watch?v=VbfpW0pbvaU",
-        "Energetic Dance Mix: https://www.youtube.com/watch?v=kXYiU_JCYtU",
-        "Upbeat Workout Playlist: https://www.youtube.com/watch?v=wXhTHyIgQ_U",
-        "High Energy EDM Playlist: https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
+        "https://www.youtube.com/watch?v=wXhTHyIgQ_U",
+        "https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
+        "https://www.youtube.com/watch?v=hT_nvWreIhg",
+        "https://www.youtube.com/watch?v=PT2_F-1esPk",
+        "https://www.youtube.com/watch?v=JGwWNGJdvx8",
+        "https://www.youtube.com/watch?v=VbfpW0pbvaU",
+        "https://www.youtube.com/watch?v=kXYiU_JCYtU",
+        "https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
+        "https://www.youtube.com/watch?v=wXhTHyIgQ_U",
+        "https://www.youtube.com/watch?v=PT2_F-1esPk",
+        "https://www.youtube.com/watch?v=JGwWNGJdvx8",
+        "https://www.youtube.com/watch?v=hT_nvWreIhg",
+        "https://www.youtube.com/watch?v=VbfpW0pbvaU",
+        "https://www.youtube.com/watch?v=kXYiU_JCYtU",
+        "https://www.youtube.com/watch?v=wXhTHyIgQ_U",
+        "https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
+        "https://www.youtube.com/watch?v=hT_nvWreIhg",
+        "https://www.youtube.com/watch?v=PT2_F-1esPk",
+        "https://www.youtube.com/watch?v=JGwWNGJdvx8",
+        "https://www.youtube.com/watch?v=VbfpW0pbvaU",
+        "https://www.youtube.com/watch?v=kXYiU_JCYtU",
+        "https://www.youtube.com/watch?v=wXhTHyIgQ_U",
+        "https://www.youtube.com/watch?v=8EJ3zbKTWQ8",
+        "https://youtu.be/bxnYFOixIoc?si=ursGemtAJ0YRcdvL",
+        "https://youtube.com/shorts/L7JeiZQpfaw?si=_sreOMIJac3YWLra",
+        "https://youtu.be/9bZkp7q19f0?si=fS4m95NC6UcLnfqK"
 
     ],
     'neutral': [
-       "Chill Background Music: https://www.youtube.com/watch?v=5qap5aO4i9A",
-        "Relaxing Ambient Sounds: https://www.youtube.com/watch?v=QZbuj3RJcdc",
-        "Instrumental Chill Playlist: https://www.youtube.com/watch?v=hHW1oY26kxQ",
-        "Calm Study Music: https://www.youtube.com/watch?v=5qap5aO4i9A",
-        "Easy Listening Music: https://www.youtube.com/watch?v=3jWRrafhO7M",
-        "Relaxing Jazz Music: https://www.youtube.com/watch?v=KQU7ntT5mbQ",
-        "Mellow Acoustic Songs: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Chillhop Music: https://www.youtube.com/watch?v=5yx6BWlEVcY",
-        "Relaxing Piano Music: https://www.youtube.com/watch?v=lFcSrYw-ARY",
-        "Soft Background Music: https://www.youtube.com/watch?v=2DVpys50LVE",
-        "Lo-fi Chill Beats: https://www.youtube.com/watch?v=5qap5aO4i9A",
-        "Ambient Music for Relaxation: https://www.youtube.com/watch?v=QZbuj3RJcdc",
-        "Chill Electronic Music: https://www.youtube.com/watch?v=hHW1oY26kxQ",
-        "Calm Acoustic Guitar: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Relaxing Classical Music: https://www.youtube.com/watch?v=QxHkLdQy5f0",
-        "Easy Listening Jazz: https://www.youtube.com/watch?v=KQU7ntT5mbQ",
-        "Mellow Indie Songs: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Chillout Lounge Music: https://www.youtube.com/watch?v=5yx6BWlEVcY",
-        "Soft Piano Background: https://www.youtube.com/watch?v=lFcSrYw-ARY",
-        "Relaxing Instrumental Music: https://www.youtube.com/watch?v=2DVpys50LVE",
-        "Lo-fi Beats Playlist: https://www.youtube.com/watch?v=5qap5aO4i9A",
-        "Chill Ambient Music: https://www.youtube.com/watch?v=QZbuj3RJcdc",
-        "Mellow Chill Music: https://www.youtube.com/watch?v=hHW1oY26kxQ",
-        "Calm Study Beats: https://www.youtube.com/watch?v=5qap5aO4i9A",
-        "Relaxing Acoustic Guitar: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Soft Classical Music: https://www.youtube.com/watch?v=QxHkLdQy5f0",
-        "Easy Listening Lounge: https://www.youtube.com/watch?v=KQU7ntT5mbQ",
-        "Mellow Jazz Music: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Chill Indie Playlist: https://www.youtube.com/watch?v=5yx6BWlEVcY",
-        "Relaxing Piano Playlist: https://www.youtube.com/watch?v=lFcSrYw-ARY",
-        "Soft Background Beats: https://www.youtube.com/watch?v=2DVpys50LVE",
-        "Lo-fi Chill Music: https://www.youtube.com/watch?v=5qap5aO4i9A",
-        "Calm Ambient Playlist: https://www.youtube.com/watch?v=QZbuj3RJcdc",
-        "Mellow Electronic Music: https://www.youtube.com/watch?v=hHW1oY26kxQ",
-        "Chill Acoustic Songs: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Relaxing Jazz Playlist: https://www.youtube.com/watch?v=KQU7ntT5mbQ",
-        "Easy Listening Acoustic: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Mellow Classical Music: https://www.youtube.com/watch?v=QxHkLdQy5f0",
-        "Chill Beats for Studying: https://www.youtube.com/watch?v=5qap5aO4i9A",
-        "Relaxing Lounge Music: https://www.youtube.com/watch?v=5yx6BWlEVcY",
-        "Soft Instrumental Playlist: https://www.youtube.com/watch?v=2DVpys50LVE",
-        "Lo-fi Hip Hop Beats: https://www.youtube.com/watch?v=5qap5aO4i9A",
-        "Calm Chill Music: https://www.youtube.com/watch?v=QZbuj3RJcdc",
-        "Mellow Indie Music: https://www.youtube.com/watch?v=2gMIi7C2DdE",
-        "Chillout Music Mix: https://www.youtube.com/watch?v=5yx6BWlEVcY",
-        "Relaxing Piano Background: https://www.youtube.com/watch?v=lFcSrYw-ARY",
-        "Soft Acoustic Playlist: https://www.youtube.com/watch?v=2DVpys50LVE",
-        "Lo-fi Music Mix: https://www.youtube.com/watch?v=5qap5aO4i9A",
-        "Calm Relaxation Music: https://www.youtube.com/watch?v=QZbuj3RJcdc",
-        "Mellow Background Music: https://www.youtube.com/watch?v=hHW1oY26kxQ",
+       "https://www.youtube.com/watch?v=y6Sxv-sUYtM",
+        "https://www.youtube.com/watch?v=ru0K8uYEZWw",
+        "https://www.youtube.com/watch?v=iPUmE-tne5U",
+        "https://www.youtube.com/watch?v=LanCLS_hIo4",
+        "https://www.youtube.com/watch?v=UfGMj10wOzg",
+        "https://www.youtube.com/watch?v=QGJuMBdaqIw",
+        "https://www.youtube.com/watch?v=d-diB65scQU",
+        "https://www.youtube.com/watch?v=nfWlot6h_JM",
+        "https://www.youtube.com/watch?v=WNek0DNCXW8",
+        "https://www.youtube.com/watch?v=kXYiU_JCYtU",
+        "https://www.youtube.com/watch?v=iPUmE-tne5U",
+        "https://www.youtube.com/watch?v=9bZkp7q19f0",
+        "https://www.youtube.com/watch?v=d-diB65scQU",
+        "https://www.youtube.com/watch?v=QGJuMBdaqIw",
+        "https://www.youtube.com/watch?v=nfWlot6h_JM",
+        "https://www.youtube.com/watch?v=kXYiU_JCYtU",
+        "https://www.youtube.com/watch?v=y6Sxv-sUYtM",
+        "https://www.youtube.com/watch?v=WNek0DNCXW8",
+        "https://www.youtube.com/watch?v=iPUmE-tne5U",
+        "https://www.youtube.com/watch?v=QGJuMBdaqIw",
+        "https://www.youtube.com/watch?v=nfWlot6h_JM",
+        "https://www.youtube.com/watch?v=kXYiU_JCYtU",
+        "https://www.youtube.com/watch?v=d-diB65scQU",
+        "https://www.youtube.com/watch?v=ru0K8uYEZWw",
+        "https://www.youtube.com/watch?v=9bZkp7q19f0",
+        "https://www.youtube.com/watch?v=5wyTZ4v7XSM",
+        "https://www.youtube.com/watch?v=nfWlot6h_JM",
+        "https://www.youtube.com/watch?v=y6Sxv-sUYtM",
+        "https://www.youtube.com/watch?v=iPUmE-tne5U",
+        "https://www.youtube.com/watch?v=d-diB65scQU",
+        "https://www.youtube.com/watch?v=QGJuMBdaqIw",
+        "https://www.youtube.com/watch?v=WNek0DNCXW8",
+        "https://www.youtube.com/watch?v=kXYiU_JCYtU",
+        "https://www.youtube.com/watch?v=nfWlot6h_JM",
+        "https://www.youtube.com/watch?v=9bZkp7q19f0",
+        "https://www.youtube.com/watch?v=d-diB65scQU",
+        "https://www.youtube.com/watch?v=ru0K8uYEZWw",
+        "https://www.youtube.com/watch?v=iPUmE-tne5U",
+        "https://www.youtube.com/watch?v=y6Sxv-sUYtM",
+        "https://www.youtube.com/watch?v=QGJuMBdaqIw",
+        "https://www.youtube.com/watch?v=WNek0DNCXW8",
+        "https://www.youtube.com/watch?v=kXYiU_JCYtU",
+        "https://www.youtube.com/watch?v=nfWlot6h_JM",
+        "https://www.youtube.com/watch?v=d-diB65scQU",
+        "https://www.youtube.com/watch?v=ru0K8uYEZWw",
+        "https://www.youtube.com/watch?v=9bZkp7q19f0",
+        "https://www.youtube.com/watch?v=iPUmE-tne5U",
+        "https://www.youtube.com/watch?v=QGJuMBdaqIw",
+        "https://www.youtube.com/watch?v=WNek0DNCXW8",
+        "https://www.youtube.com/watch?v=kXYiU_JCYtU",
+        "https://www.youtube.com/watch?v=nfWlot6h_JM"
     ],
     'angry': [
-         "Relaxing Piano Music: https://www.youtube.com/watch?v=lFcSrYw-ARY",
-        "Calming Forest Sounds: https://www.youtube.com/watch?v=eKFTSSKCzWA",
-        "Guided Meditation for Anger: https://www.youtube.com/watch?v=G_oUrxA9iAc",
-        "Soothing Instrumental Music: https://www.youtube.com/watch?v=Mk7dKq3l9BM",
-        "Yoga for Anger Release: https://www.youtube.com/watch?v=csO7ZeDxLJY",
-        "Peaceful Guitar Music: https://www.youtube.com/watch?v=2OEL4P1Rz04",
-        "Deep Breathing Exercises: https://www.youtube.com/watch?v=_mZbzDOpylA",
-        "Classical Music for Relaxation: https://www.youtube.com/watch?v=QxHkLdQy5f0",
-        "Mindfulness Meditation: https://www.youtube.com/watch?v=ZToicYcHIOU",
-        "Nature Sounds for Relaxation: https://www.youtube.com/watch?v=odCOip1Vvjc",
-        "Stress Relief Music: https://www.youtube.com/watch?v=97wqQbxH1wI",
-        "Anger Management Techniques: https://www.youtube.com/watch?v=xfiJrJWU4D4",
-        "Calming Flute Music: https://www.youtube.com/watch?v=K86YzyS_78g",
-        "Relaxing Jazz Music: https://www.youtube.com/watch?v=KQU7ntT5mbQ",
-        "Ambient Music for Stress Relief: https://www.youtube.com/watch?v=yyL8ShQv2NE",
-        "Progressive Muscle Relaxation: https://www.youtube.com/watch?v=ihO02wUzgkc",
-        "Chill Out Music: https://www.youtube.com/watch?v=gn1qMYfFrro",
-        "Relaxing Harp Music: https://www.youtube.com/watch?v=NuN7wDYCr1I",
-        "Tai Chi for Stress Relief: https://www.youtube.com/watch?v=ZuXfFAumIc4",
-        "Guided Imagery Meditation: https://www.youtube.com/watch?v=1vx8iUvfyCY",
-        "Relaxing Piano Music for Stress Relief: https://www.youtube.com/watch?v=xN6bqYbIZn8",
-        "Music for Deep Relaxation: https://www.youtube.com/watch?v=2OEL4P1Rz04",
-        "Gentle Yoga for Relaxation: https://www.youtube.com/watch?v=v7AYKMP6rOE",
-        "Serene Zen Music: https://www.youtube.com/watch?v=Wl959QnD3lM",
-        "Calming Water Sounds: https://www.youtube.com/watch?v=ugDvdGyr2zY",
-        "Relaxing Cello Music: https://www.youtube.com/watch?v=hjHo8-K7wkM",
-        "Meditative Music: https://www.youtube.com/watch?v=AG_84jqytbs",
-        "Emotional Release Meditation: https://www.youtube.com/watch?v=wfDTp2GogaQ",
-        "Nature Meditation: https://www.youtube.com/watch?v=ugDvdGyr2zY",
-        "Calm Music for Meditation: https://www.youtube.com/watch?v=lFcSrYw-ARY",
-        "Anger Release Yoga: https://www.youtube.com/watch?v=bZrKFSHqRhA",
-        "Soothing Background Music: https://www.youtube.com/watch?v=qFZKK7K52uQ",
-        "Calming Ocean Waves: https://www.youtube.com/watch?v=VztCEeoO3Yc",
-        "Relaxing Piano for Anger: https://www.youtube.com/watch?v=MI2V1PhOjuA",
-        "Healing Meditation: https://www.youtube.com/watch?v=wfDTp2GogaQ",
-        "Relaxing Music for Sleep: https://www.youtube.com/watch?v=iQ-zi5KqkG8",
-        "Stress Management Techniques: https://www.youtube.com/watch?v=xfiJrJWU4D4",
-        "Gentle Relaxing Music: https://www.youtube.com/watch?v=lFcSrYw-ARY",
-        "Relaxing Nature Scenes: https://www.youtube.com/watch?v=lFcSrYw-ARY",
-        "Calming Instrumental Music: https://www.youtube.com/watch?v=WYeDsa4Tw0c",
-        "Mindfulness for Anger: https://www.youtube.com/watch?v=Q1EEydWXAXQ",
-        "Soft Music for Relaxation: https://www.youtube.com/watch?v=MI2V1PhOjuA",
-        "Stress Reduction Meditation: https://www.youtube.com/watch?v=wruCI3bI_OU",
-        "Relaxing Guitar for Anger: https://www.youtube.com/watch?v=2OEL4P1Rz04",
-        "Deep Relaxation Techniques: https://www.youtube.com/watch?v=ihO02wUzgkc",
-        "Yoga Nidra for Stress Relief: https://www.youtube.com/watch?v=csO7ZeDxLJY",
-        "Calming Soundscapes: https://www.youtube.com/watch?v=odCOip1Vvjc",
-        "Soothing Background Music for Anger: https://www.youtube.com/watch?v=yyL8ShQv2NE",
-        "Relaxing Music for Inner Peace: https://www.youtube.com/watch?v=gn1qMYfFrro",
-        "Meditation for Anger Management: https://www.youtube.com/watch?v=G_oUrxA9iAc",
-       
+         "https://youtu.be/BumD3DxlxeM?si=87v2i8TVt-DYp_EC",
+        "https://youtu.be/bnL_u9WMzl8?si=_3xaUJv00-jlKB0q",
+        "https://youtu.be/rHn8YucCzn8?si=90pJZAeH8MzG3DrK",
+        "https://youtu.be/9bZkp7q19f0?si=kWfKJizPCQFLzxzo",
+        "https://youtu.be/4obOTmlsTI8?si=X1_PYugkPkYcdSI4",
+        "https://youtu.be/hBzP8MtJf04?si=CD-eg-iXR6AG0x9q",
+        "https://youtu.be/Pq8FgBStWZg?si=P4Ucq2UJW34a8daM",
+        "https://youtu.be/LnJwH_PZXnM?si=dTp6qw3FSlZ6lFvW",
+        "https://www.youtube.com/watch?v=UPkMkIOzej8",
+        "https://youtu.be/n2WXRXXa1aM?si=rwkRmr4R4BaWQ1o3",
+        "https://youtu.be/r19_Dq3TOyM?si=vSwLff3C05m_U-ew",
+        "https://youtu.be/tV2Ecd7m6Tc?si=5bRLi3fRC0Pac2m8",
+        "https://youtu.be/PmQ2FJBJBRc?si=Do66d58iphwZV5jz",
+        "https://youtu.be/iYjmXxlcm4U?si=h6curV97M7nKinmD",
+        "https://youtu.be/plS2sr3HMYg?si=F5Nmnkbdo3bGz_zE",
     ]}
 
 
@@ -295,211 +328,209 @@ emotions = {
 
 playlists = {
     'angry': [
-        "https://open.spotify.com/track/1dGr1c8CrMLDpV6mPbImSI",  # "Smells Like Teen Spirit" - Nirvana
-        "https://open.spotify.com/track/2Kh43m04B1UkVcpcRa1Zug",  # "Break Stuff" - Limp Bizkit
-        "https://open.spotify.com/track/1a4vY4m6VQltTJoW06Y4p1",  # "So What" - Metallica
-        "https://open.spotify.com/track/0NWPxcsf5vdjdiFUI8NgkP",  # "Bring Me to Life" - Evanescence
-        "https://open.spotify.com/track/0uUHzfTmKvEh71nGFrmzey",  # "Bhaag DK Bose" - Delhi Belly (Hindi)
-        "https://open.spotify.com/track/5xrt93LWWdQ6Jmb2Qm8vQC",  # "Killing In The Name" - Rage Against The Machine
-        "https://open.spotify.com/track/6s5MoQnGfs0kFSJ4cwsuX4",  # "Headstrong" - Trapt
-        "https://open.spotify.com/track/1JHHF6OCU6XgLUGljfc16z",  # "Enter Sandman" - Metallica
-        "https://open.spotify.com/track/2cFrymmkijnjDg9SS92EPM",  # "Duality" - Slipknot
-        "https://open.spotify.com/track/3ZffCQKLFLUvYM59XKLbVm",  # "Chop Suey!" - System Of A Down
-        "https://open.spotify.com/track/4yHqbL17uBzEJJPU5RZQzQ",  # "Psycho" - Muse
-        "https://open.spotify.com/track/5V0MlUE1Bft0mbLlND7FJz",  # "Animal I Have Become" - Three Days Grace
-        "https://open.spotify.com/track/1bNxY4Z4kGZxHAJccNQwOU",  # "Before I Forget" - Slipknot
-        "https://open.spotify.com/track/2VpZyFEThQbPJWIQS7FgPS",  # "Not Afraid" - Eminem
-        "https://open.spotify.com/track/1IueXOQyABrMOprrzwQJWN",  # "Disturbia" - Rihanna
-        "https://open.spotify.com/track/3a1lNhkSLSkpJE4MSHpDu9",  # "Feel Invincible" - Skillet
-        "https://open.spotify.com/track/4eVknU0tIf8jE1M4eWc9Ws",  # "Monster" - Skillet
-        "https://open.spotify.com/track/1ej6NQ1PuGDiAMkXr9HMMM",  # "Face Everything and Rise" - Papa Roach
-        "https://open.spotify.com/track/1hM1Mcn8f0yspOhDxv5t3j",  # "Given Up" - Linkin Park
-        "https://open.spotify.com/track/7w87IxuO7BDcJ3YUqCyMTT",  # "Bulls On Parade" - Rage Against The Machine
+       "https://open.spotify.com/track/1dGr1c8CrMLDpV6mPbImSI",
+        "https://open.spotify.com/track/2MuWTIM3b0YEAskbeeFE1i",
+        "https://open.spotify.com/track/0NWPxcsf5vdjdiFUI8NgkP",
+        "https://open.spotify.com/track/3xXBsjrbG1xQIm1xv1cKOt",
+        "https://open.spotify.com/track/5fVZC9GiM4e8vu99W0Xf6J",
+        "https://open.spotify.com/track/5sICkBXVmaCQk5aISGR3x1",
+        "https://open.spotify.com/track/5sICkBXVmaCQk5aISGR3x1",
+        "https://open.spotify.com/track/3ZffCQKLFLUvYM59XKLbVm",
+        "https://open.spotify.com/track/4VqPOruhp5EdPBeR92t6lQ",
+        "https://open.spotify.com/track/7Ie9W94M7OjPoZVV216Xus",
+        "https://open.spotify.com/track/3a1lNhkSLSkpJE4MSHpDu9",
+        "https://open.spotify.com/track/6QgjcU0zLnzq5OrUoSZ3OK",
+        "https://open.spotify.com/track/2nLtzopw4rPReszdYBJU6h",
+        "https://open.spotify.com/track/7w87IxuO7BDcJ3YUqCyMTT",
+        "https://open.spotify.com/track/4Ce37cRWvM1vIGGynKcs22",
+        "https://open.spotify.com/track/3S7HNKPakdwNEBFIVTL6dZ",
+        "https://open.spotify.com/track/1rgnBhdG2JDFTbYkYRZAku",
+        "https://open.spotify.com/track/3jjujdWJ72nww5eGnfs2E7",
+        "https://open.spotify.com/track/2Fxmhks0bxGSBdJ92vM42m",
+        "https://open.spotify.com/track/3ZFTkvIE7kyPt6Nu3PEa7V",
+        "https://open.spotify.com/track/4uLU6hMCjMI75M1A2tKUQC"
     ],
     'disgust': [
-        "https://open.spotify.com/track/4l2WzFLrGNHLuvd7Uo0kn1",  # "Creep" - Radiohead
-        "https://open.spotify.com/track/2takcwOaAZWiXQijPHIx7B",  # "Toxic" - Britney Spears
-        "https://open.spotify.com/track/1JLi6I09H4eVPC6eQNeA7c",  # "Sick and Tired" - Anastacia
-        "https://open.spotify.com/track/7e89621JPkKaeDSTQ3avtg",  # "Sadda Haq" - Rockstar (Hindi)
-        "https://open.spotify.com/track/4tX2TplrkIP4v05BNC903e",  # "Hate That I Love You" - Rihanna ft. Ne-Yo
-        "https://open.spotify.com/track/1zR5wWcEjPjgoWhjuqXIGz",  # "Love The Way You Lie" - Eminem ft. Rihanna
-        "https://open.spotify.com/track/1MSbgVtEnWk4roAnTgBeD6",  # "You're Beautiful" - James Blunt
-        "https://open.spotify.com/track/1y8NXRk8YiHxxIodSmuJrH",  # "Gives You Hell" - The All-American Rejects
-        "https://open.spotify.com/track/4EZz8Y0Il70ulNk1lP0LoZ",  # "Rolling in the Deep" - Adele
-        "https://open.spotify.com/track/6brl7bwOHmGFkNw3MBqssT",  # "I Don't Care" - Ed Sheeran & Justin Bieber
-        "https://open.spotify.com/track/2d8JP84HNLKhmd6IYOoupQ",  # "Somebody's Watching Me" - Rockwell
-        "https://open.spotify.com/track/0LOJjYmHp8b2K73C0fvLgA",  # "Bad Guy" - Billie Eilish
-        "https://open.spotify.com/track/3yfqSUWxFvZELEM4PmlwIR",  # "Shape of You" - Ed Sheeran
-        "https://open.spotify.com/track/0pd24Y7HLPykA3xs3e2ReF",  # "Dark Horse" - Katy Perry
-        "https://open.spotify.com/track/4SZko61aMnmgvNhfhgTuD3",  # "Uptown Funk" - Mark Ronson ft. Bruno Mars
-        "https://open.spotify.com/track/3zTLaA6KtyAwwk0Pl8ViJP",  # "Somebody That I Used To Know" - Gotye
-        "https://open.spotify.com/track/7qn6mFhI60CWf9AqFqUVHk",  # "Don't Let Me Down" - The Chainsmokers
-        "https://open.spotify.com/track/5oE5z39G8MqltMZB8W8ZJb",  # "I Hate U I Love U" - gnash
-        "https://open.spotify.com/track/5yY9lUy8nbvjM1Uyo1Uqoc",  # "Lucid Dreams" - Juice WRLD
-        "https://open.spotify.com/track/4VqPOruhp5EdPBeR92t6lQ",  # "Shallow" - Lady Gaga & Bradley Cooper
+        "https://open.spotify.com/track/3e9HZxeyfWwjeyPAMmWSSQ",
+    "https://open.spotify.com/track/5b88tNINg4Q4nrRbrCXUmg",
+    "https://open.spotify.com/track/3z8h0TU7ReDPLIbEnYhWZb",
+    "https://open.spotify.com/track/7w87IxuO7BDcJ3YUqCyMTT",
+    "https://open.spotify.com/track/1rgnBhdG2JDFTbYkYRZAku",
+    "https://open.spotify.com/track/3e9HZxeyfWwjeyPAMmWSSQ",
+    "https://open.spotify.com/track/2d7LPtieXdIYzf7yHPooWd",
+    "https://open.spotify.com/track/4aWmUDTfIPGksMNLV2rQP2",
+    "https://open.spotify.com/track/4umIPjkehX1r7uhmGvXiSV",
+    "https://open.spotify.com/track/2takcwOaAZWiXQijPHIx7B",
+    "https://open.spotify.com/track/7e89621JPkKaeDSTQ3avtg",
+    "https://open.spotify.com/track/6brl7bwOHmGFkNw3MBqssT",
+    "https://open.spotify.com/track/2d8JP84HNLKhmd6IYOoupQ",
+    "https://open.spotify.com/track/3yfqSUWxFvZELEM4PmlwIR",
+    "https://open.spotify.com/track/5yY9lUy8nbvjM1Uyo1Uqoc",
+    "https://open.spotify.com/track/4VqPOruhp5EdPBeR92t6lQ"
     ],
     'fear': [
-        "https://open.spotify.com/track/6M6xD2N4D0oX6K4PrxKlbv",  # "Thriller" - Michael Jackson
-        "https://open.spotify.com/track/1IueXOQyABrMOprrzwQJWN",  # "Disturbia" - Rihanna
-        "https://open.spotify.com/track/1GlLCna7CzsaIXW4CZ5TPx",  # "Haunted" - Beyoncé
-        "https://open.spotify.com/track/3AszgPDZd9q0DpDFt4HFBy",  # "Aao Kabhi Haveli Pe" - Stree (Hindi)
-        "https://open.spotify.com/track/2d8JP84HNLKhmd6IYOoupQ",  # "Somebody's Watching Me" - Rockwell
-        "https://open.spotify.com/track/1z1Hg7Vb0AhHDiEmnDE79l",  # "I Gotta Feeling" - The Black Eyed Peas
-        "https://open.spotify.com/track/0uUHzfTmKvEh71nGFrmzey",  # "Bhaag DK Bose" - Delhi Belly (Hindi)
-        "https://open.spotify.com/track/4V6fwHD14LEzvVacgO7aWX",  # "Bad Blood" - Taylor Swift ft. Kendrick Lamar
-        "https://open.spotify.com/track/0Oe49j06Bjrxs8PltuVeaW",  # "Bohemian Rhapsody" - Queen
-        "https://open.spotify.com/track/7FIWs0pqAYbP91WWM0vlTQ",  # "Billie Jean" - Michael Jackson
-        "https://open.spotify.com/track/3h5tYJpWsf5rDqdWfZsaBa",  # "Ghost" - Ella Henderson
-        "https://open.spotify.com/track/4JE6agDK5H9HpvEZflAOuT",  # "Demons" - Imagine Dragons
-        "https://open.spotify.com/track/1jyiiauRYhJ6PL5VSz1dJt",  # "Human" - Christina Perri
-        "https://open.spotify.com/track/2Z1D24qhQz0qC2xZ73hEZ8",  # "Cry Baby" - Melanie Martinez
-        "https://open.spotify.com/track/7GHjEsjT0sQxDIu0uh5dXk",  # "Dark Horse" - Katy Perry
-        "https://open.spotify.com/track/1nYeVF5y9lupHqfKiBNtHQ",  # "Get Out Alive" - Three Days Grace
-        "https://open.spotify.com/track/2lbbOpLM98j24UxfwOe4dV",  # "Animals" - Martin Garrix
-        "https://open.spotify.com/track/4eWQlBRaTjPPUlzacqEeoQ",  # "Ghostbusters" - Ray Parker Jr.
-        "https://open.spotify.com/track/3iJr4a8CwxtCTLDfhgsQoK",  # "Monster" - Imagine Dragons
-        "https://open.spotify.com/track/5H3Gcgwohoqtkho2xLsrmA",  # "Bad Moon Rising" - Creedence Clearwater Revival
+        "https://open.spotify.com/track/3d9DChrdc6BOeFsbrZ3Is0",
+    "https://open.spotify.com/track/3a1lNhkSLSkpJE4MSHpDu9",
+    "https://open.spotify.com/track/2iuZJX9X9P0GKaE93xcPjk",
+    "https://open.spotify.com/track/3U21A07gAloCc4P7J8rxcn",
+    "https://open.spotify.com/track/1dGr1c8CrMLDpV6mPbImSI",
+    "https://open.spotify.com/track/463CkQjx2Zk1yXoBuierM9",
+    "https://open.spotify.com/track/3z8h0TU7ReDPLIbEnYhWZb",
+    "https://open.spotify.com/track/0VjIjW4GlUZAMYd2vXMi3b",
+    "https://open.spotify.com/track/40riOy7x9W7GXjyGp4pjAv",
+    "https://open.spotify.com/track/7qiZfU4dY1lWllzX7mPBI3",
+    "https://open.spotify.com/track/3AszgPDZd9q0DpDFt4HFBy",
+    "https://open.spotify.com/track/2d8JP84HNLKhmd6IYOoupQ",
+    "https://open.spotify.com/track/1z1Hg7Vb0AhHDiEmnDE79l",
+    "https://open.spotify.com/track/0Oe49j06Bjrxs8PltuVeaW",
+    "https://open.spotify.com/track/7FIWs0pqAYbP91WWM0vlTQ",
+    "https://open.spotify.com/track/4eWQlBRaTjPPUlzacqEeoQ"
     ],
     'happy': [
-        "https://open.spotify.com/track/6c7U9NggVcArRVznL96CGe",  # "Happy" - Pharrell Williams
-        "https://open.spotify.com/track/1z1Hg7Vb0AhHDiEmnDE79l",  # "I Gotta Feeling" - The Black Eyed Peas
-        "https://open.spotify.com/track/0wjoPOltJ6pTrRZSuXYx8W",  # "Galway Girl" - Ed Sheeran
-        "https://open.spotify.com/track/6H7KEPxO4rI7hV62q4ndHY",  # "Subha Hone Na De" - Desi Boyz (Hindi)
-        "https://open.spotify.com/track/6QgjcU0zLnzq5OrUoSZ3OK",  # "Best Day of My Life" - American Authors
-        "https://open.spotify.com/track/3yfqSUWxFvZELEM4PmlwIR",  # "Shape of You" - Ed Sheeran
-        "https://open.spotify.com/track/1MSbgVtEnWk4roAnTgBeD6",  # "You're Beautiful" - James Blunt
-        "https://open.spotify.com/track/3a1lNhkSLSkpJE4MSHpDu9",  # "Feel Invincible" - Skillet
-        "https://open.spotify.com/track/6c7U9NggVcArRVznL96CGe",  # "Happy" - Pharrell Williams
-        "https://open.spotify.com/track/4iJyoBOLtHqaGxP12qzhQI",  # "Levitating" - Dua Lipa
-        "https://open.spotify.com/track/6Qs4SXO9dwPj5GKvVOv8Ki",  # "Blinding Lights" - The Weeknd
-        "https://open.spotify.com/track/5Fw5HhPjdzeFbWv3kXsMvA",  # "Don't Start Now" - Dua Lipa
-        "https://open.spotify.com/track/3JVRyPQ34QSo7c5j9c3WGG",  # "Peaches" - Justin Bieber
-        "https://open.spotify.com/track/1eHNi74bP2EN8y7rDfkiF9",  # "Save Your Tears" - The Weeknd
-        "https://open.spotify.com/track/2DEZmgHKAvm41k4J3R2E9Y",  # "ROXANNE" - Arizona Zervas
-        "https://open.spotify.com/track/5T8EDUDqKcs6OSOwEsfqG7",  # "Positions" - Ariana Grande
-        "https://open.spotify.com/track/4RVwu0g32PAqgUiJoXsdF8",  # "Happier Than Ever" - Billie Eilish
-        "https://open.spotify.com/track/7szuecWAPwGoV1e5vGu8tl",  # "Shivers" - Ed Sheeran
-        "https://open.spotify.com/track/6I3mqTwhRpn34SLVafSH7G",  # "STAY" - The Kid LAROI, Justin Bieber
-        "https://open.spotify.com/track/7qEHsqek33rTcFNT9PFqLf",  # "When I Was Your Man" - Bruno Mars
+       "https://open.spotify.com/track/1z1Hg7Vb0AhHDiEmnDE79l",
+    "https://open.spotify.com/track/6QgjcU0zLnzq5OrUoSZ3OK",
+    "https://open.spotify.com/track/3yfqSUWxFvZELEM4PmlwIR",
+    "https://open.spotify.com/track/3a1lNhkSLSkpJE4MSHpDu9",
+    "https://open.spotify.com/track/4iJyoBOLtHqaGxP12qzhQI",
+    "https://open.spotify.com/track/6Qs4SXO9dwPj5GKvVOv8Ki",
+    "https://open.spotify.com/track/2DEZmgHKAvm41k4J3R2E9Y",
+    "https://open.spotify.com/track/5T8EDUDqKcs6OSOwEsfqG7",
+    "https://open.spotify.com/track/4RVwu0g32PAqgUiJoXsdF8",
+    "https://open.spotify.com/track/7szuecWAPwGoV1e5vGu8tl",
+    "https://open.spotify.com/track/6I3mqTwhRpn34SLVafSH7G",
+    "https://open.spotify.com/track/7qEHsqek33rTcFNT9PFqLf",
+    "https://open.spotify.com/track/2takcwOaAZWiXQijPHIx7B",
+    "https://open.spotify.com/track/7yq4Qj7cqayVTp3FF9CWbm",
+    "https://open.spotify.com/track/1Je1IMUlBXcx1Fz0WE7oPT",
+    "https://open.spotify.com/track/6xtcFXSo8H9BZN637BMVKS",
+    "https://open.spotify.com/track/6DCZcSspjsKoFjzjrWoCdn",
+    "https://open.spotify.com/track/7qiZfU4dY1lWllzX7mPBI3",
+    "https://open.spotify.com/track/5oO3drDxtziYU2H1X23ZIp" 
     ],
     'neutral': [
-        "https://open.spotify.com/track/3yfqSUWxFvZELEM4PmlwIR",  # "Shape of You" - Ed Sheeran
-        "https://open.spotify.com/track/0k664IuFwVP557Gnx7RhIl",  # "Someone Like You" - Adele
-        "https://open.spotify.com/track/7qiZfU4dY1lWllzX7mPBI3",  # "Despacito" - Luis Fonsi ft. Daddy Yankee
-        "https://open.spotify.com/track/4RiKqUDGvcGmpGQ2vDhssF",  # "Kabira" - Yeh Jawaani Hai Deewani (Hindi)
-        "https://open.spotify.com/track/3ZFTkvIE7kyPt6Nu3PEa7V",  # "Photograph" - Ed Sheeran
-        "https://open.spotify.com/track/6LsAAHotRLMOHfCsSfYCsz",  # "Closer" - The Chainsmokers
-        "https://open.spotify.com/track/1zHlj4dQ8ZAtrayhuDDmkY",  # "I'm Yours" - Jason Mraz
-        "https://open.spotify.com/track/1z1Hg7Vb0AhHDiEmnDE79l",  # "I Gotta Feeling" - The Black Eyed Peas
-        "https://open.spotify.com/track/0tgVpDi06FyKpA1z0VMD4v",  # "Lean On" - Major Lazer & DJ Snake
-        "https://open.spotify.com/track/1z1Hg7Vb0AhHDiEmnDE79l",  # "I Gotta Feeling" - The Black Eyed Peas
-        "https://open.spotify.com/track/0tgVpDi06FyKpA1z0VMD4v",  # "Lean On" - Major Lazer & DJ Snake
-        "https://open.spotify.com/track/6LsAAHotRLMOHfCsSfYCsz",  # "Closer" - The Chainsmokers
-        "https://open.spotify.com/track/2gONQg5E4JlO6GXFsC0A1l",  # "The Nights" - Avicii
-        "https://open.spotify.com/track/5HCyWlXZPP0y6Gqq8TgA20",  # "Stressed Out" - Twenty One Pilots
-        "https://open.spotify.com/track/2dpaYNEQHiRxtZbfNsse99",  # "Heat Waves" - Glass Animals
-        "https://open.spotify.com/track/1E1eyIwtEKaU14xbCU8gkH",  # "Heathens" - Twenty One Pilots
-        "https://open.spotify.com/track/4iJyoBOLtHqaGxP12qzhQI",  # "Levitating" - Dua Lipa
-        "https://open.spotify.com/track/3XIIOCu2xziABwAQ9JZqKt",  # "Don't Wanna Know" - Maroon 5
-        "https://open.spotify.com/track/0hNduWmlWmEmuwEFcYvRu1",  # "Feel It Still" - Portugal. The Man
-        "https://open.spotify.com/track/0ofHAoxe9vBkTCp2UQIavz",  # "Sunflower" - Post Malone, Swae Lee
+          "https://open.spotify.com/track/3yfqSUWxFvZELEM4PmlwIR",
+    "https://open.spotify.com/track/0k664IuFwVP557Gnx7RhIl",
+    "https://open.spotify.com/track/7qiZfU4dY1lWllzX7mPBI3",
+    "https://open.spotify.com/track/3ZFTkvIE7kyPt6Nu3PEa7V",
+    "https://open.spotify.com/track/6LsAAHotRLMOHfCsSfYCsz",
+    "https://open.spotify.com/track/1zHlj4dQ8ZAtrayhuDDmkY",
+    "https://open.spotify.com/track/1z1Hg7Vb0AhHDiEmnDE79l",
+    "https://open.spotify.com/track/0tgVpDi06FyKpA1z0VMD4v",
+    "https://open.spotify.com/track/1z1Hg7Vb0AhHDiEmnDE79l",
+    "https://open.spotify.com/track/0tgVpDi06FyKpA1z0VMD4v",
+    "https://open.spotify.com/track/6LsAAHotRLMOHfCsSfYCsz",
+    "https://open.spotify.com/track/5HCyWlXZPP0y6Gqq8TgA20",
+    "https://open.spotify.com/track/2dpaYNEQHiRxtZbfNsse99",
+    "https://open.spotify.com/track/4iJyoBOLtHqaGxP12qzhQI",
+    "https://open.spotify.com/track/0hNduWmlWmEmuwEFcYvRu1",
+    "https://open.spotify.com/track/0ofHAoxe9vBkTCp2UQIavz"
     ],
     'sad': [
-        "https://open.spotify.com/track/3U4isOIWM3VvDubwSI3y7a",  # "Fix You" - Coldplay
-        "https://open.spotify.com/track/0k664IuFwVP557Gnx7RhIl",  # "Someone Like You" - Adele
-        "https://open.spotify.com/track/6LS6cP1X7eQFSOL0u31wPO",  # "Channa Mereya" - Ae Dil Hai Mushkil (Hindi)
-        "https://open.spotify.com/track/3x6zHFA8kZ6X3nGnqxSxQ4",  # "Tujh Mein Rab Dikhta Hai" - Rab Ne Bana Di Jodi (Hindi)
-        "https://open.spotify.com/track/5hc71nKsUgtwQ3z52KEKQk",  # "When I Was Your Man" - Bruno Mars
-        "https://open.spotify.com/track/4E6cwWJWZw2zWf7VFbH7wf",  # "Jeene Laga Hoon" - Ramaiya Vastavaiya (Hindi)
-        "https://open.spotify.com/track/5yY9lUy8nbvjM1Uyo1Uqoc",  # "Lucid Dreams" - Juice WRLD
-        "https://open.spotify.com/track/7mWFF4gPADjTQjC97CgFVt",  # "Thinking Out Loud" - Ed Sheeran
-        "https://open.spotify.com/track/3U4isOIWM3VvDubwSI3y7a",  # "Fix You" - Coldplay
-        "https://open.spotify.com/track/3Yv8T2B5FlNIX9l7dMyh0S",  # "Yesterday" - The Beatles
-        "https://open.spotify.com/track/4jAiXlE6lOr4EfM4oeLkXy",  # "Stay With Me" - Sam Smith
-        "https://open.spotify.com/track/3n3Ppam7vgaVa1iaRUc9Lp",  # "Wonderwall" - Oasis
-        "https://open.spotify.com/track/1i1fxkWeaMmKEB4T7zqbzK",  # "A Thousand Years" - Christina Perri
-        "https://open.spotify.com/track/6b8Be6ljOzmkOmFslEb23P",  # "Say You Won't Let Go" - James Arthur
-        "https://open.spotify.com/track/1qOL5x8MydsDfsz2k9jaSx",  # "Pachtaoge" - Arijit Singh (Hindi)
-        "https://open.spotify.com/track/5fAixuTiZ2dJieSYkJr7nK",  # "Let Her Go" - Passenger
-        "https://open.spotify.com/track/0GLUBbD96O2SrWkOFLV5iu",  # "Humdard" - Ek Villain (Hindi)
-        "https://open.spotify.com/track/7fBv7CLKzipRk6EC6TWHOB",  # "Someone You Loved" - Lewis Capaldi
-        "https://open.spotify.com/track/0rFke7jzqcjPtg1F4FDvLD",  # "Bruises" - Lewis Capaldi
-        "https://open.spotify.com/track/4Fou5BfS2dPBY2Jei6i7a4",  # "Too Good At Goodbyes" - Sam Smith
+         "https://open.spotify.com/track/3U4isOIWM3VvDubwSI3y7a",
+    "https://open.spotify.com/track/0k664IuFwVP557Gnx7RhIl",
+    "https://open.spotify.com/track/5hc71nKsUgtwQ3z52KEKQk",
+    "https://open.spotify.com/track/4E6cwWJWZw2zWf7VFbH7wf",
+    "https://open.spotify.com/track/5yY9lUy8nbvjM1Uyo1Uqoc",
+    "https://open.spotify.com/track/7mWFF4gPADjTQjC97CgFVt",
+    "https://open.spotify.com/track/3U4isOIWM3VvDubwSI3y7a",
+    "https://open.spotify.com/track/3n3Ppam7vgaVa1iaRUc9Lp",
+    "https://open.spotify.com/track/1i1fxkWeaMmKEB4T7zqbzK",
+    "https://open.spotify.com/track/6b8Be6ljOzmkOmFslEb23P",
+    "https://open.spotify.com/track/7fBv7CLKzipRk6EC6TWHOB",
+    "https://open.spotify.com/track/0TK2YIli7K1leLovkQiNik",
+    "https://open.spotify.com/track/6I9VzXrHxO9rA9A5euc8Ak",
+    "https://open.spotify.com/track/0r7CVbZTWZgbTCYdfa2P31",
+    "https://open.spotify.com/track/7aiClxsDWFRQ0Kzk5KI5ku",
+    "https://open.spotify.com/track/2takcwOaAZWiXQijPHIx7B",
+    "https://open.spotify.com/track/6jG2YzhxptolDzLHTGLt7S",
+    "https://open.spotify.com/track/0ofHAoxe9vBkTCp2UQIavz"
     ],
     'surprised': [
-        "https://open.spotify.com/track/6bo2Sc56kQZ2pSh5B1oqqt",  # "Somebody's Watching Me" - Rockwell
-        "https://open.spotify.com/track/4kLLWz6uS0kp3ojvtF8cw5",  # "Bad Guy" - Billie Eilish
-        "https://open.spotify.com/track/3a1lNhkSLSkpJE4MSHpDu9",  # "Feel Invincible" - Skillet
-        "https://open.spotify.com/track/6RUKPb4LETWmmr3iAEQktW",  # "Believer" - Imagine Dragons
-        "https://open.spotify.com/track/1z1Hg7Vb0AhHDiEmnDE79l",  # "I Gotta Feeling" - The Black Eyed Peas
-        "https://open.spotify.com/track/2Z1D24qhQz0qC2xZ73hEZ8",  # "Cry Baby" - Melanie Martinez
-        "https://open.spotify.com/track/6M6xD2N4D0oX6K4PrxKlbv",  # "Thriller" - Michael Jackson
-        "https://open.spotify.com/track/1IueXOQyABrMOprrzwQJWN",  # "Disturbia" - Rihanna
-        "https://open.spotify.com/track/5OCJzvD7sykQEKHH7qAC3C",  # "SICKO MODE" - Travis Scott
-        "https://open.spotify.com/track/4PzPvpE9TE4dD11s1MHpbf",  # "Bad Romance" - Lady Gaga
-        "https://open.spotify.com/track/0k664IuFwVP557Gnx7RhIl",  # "Someone Like You" - Adele
-        "https://open.spotify.com/track/0KFYjWwEtLAN8k8ZSPpMfw",  # "Castle" - Halsey
-        "https://open.spotify.com/track/1wgoWgL9fGf2Hd5NXfxYEK",  # "Stairway to Heaven" - Led Zeppelin
-        "https://open.spotify.com/track/5Nf0ApM3Aogz0U4wNW5rFd",  # "Wonderwall" - Oasis
-        "https://open.spotify.com/track/3DTR4oKUIiF2y89Qcq29Lg",  # "Goosebumps" - Travis Scott
-        "https://open.spotify.com/track/3U4isOIWM3VvDubwSI3y7a",  # "Fix You" - Coldplay
-        "https://open.spotify.com/track/4cOdK2wGLETKBW3PvgPWqT",  # "Never Gonna Give You Up" - Rick Astley
-        "https://open.spotify.com/track/0EmeFodog0BfCgMzAIvKQp",  # "Hips Don't Lie" - Shakira
-        "https://open.spotify.com/track/1kT5m9XwyAiGHr9a3a7IrB",  # "Uptown Funk" - Mark Ronson ft. Bruno Mars
-        "https://open.spotify.com/track/4uLU6hMCjMI75M1A2tKUQC",  # "Bohemian Rhapsody" - Queen
+        "https://open.spotify.com/track/3a1lNhkSLSkpJE4MSHpDu9",
+    "https://open.spotify.com/track/6RUKPb4LETWmmr3iAEQktW",
+    "https://open.spotify.com/track/1z1Hg7Vb0AhHDiEmnDE79l",
+    "https://open.spotify.com/track/5OCJzvD7sykQEKHH7qAC3C",
+    "https://open.spotify.com/track/0k664IuFwVP557Gnx7RhIl",
+    "https://open.spotify.com/track/3U4isOIWM3VvDubwSI3y7a",
+    "https://open.spotify.com/track/4cOdK2wGLETKBW3PvgPWqT",
+    "https://open.spotify.com/track/4uLU6hMCjMI75M1A2tKUQC",
+    "https://open.spotify.com/track/6RRNNciQGZEXnqk8SQ9yv5",
+    "https://open.spotify.com/track/0r7CVbZTWZgbTCYdfa2P31",
+    "https://open.spotify.com/track/3U21A07gAloCc4P7J8rxcn",
+    "https://open.spotify.com/track/0e7ipj03S05BNilyu5bRzt",
+    "https://open.spotify.com/track/3eekarcy7kvN4yt5ZFzltW",
+    "https://open.spotify.com/track/4RVtBlHFKj51Ipvpfv5ER4",
+    "https://open.spotify.com/track/7aiClxsDWFRQ0Kzk5KI5ku",
+    "https://open.spotify.com/track/3RiPr603aXAoi4GHyXx0uy",
+    "https://open.spotify.com/track/4iV5W9uYEdYUVa79Axb7Rh",
+    "https://open.spotify.com/track/5yY9lUy8nbvjM1Uyo1Uqoc"
     ],
 }
 
 articles= {
-    'angry': [
-        "https://www.psychologytoday.com/us/blog/anger-in-the-age-entitlement",
-        "https://www.verywellmind.com/how-to-control-anger-2584781",
-        "https://www.helpguide.org/articles/relationships-communication/anger-management.htm",
-        "https://www.webmd.com/mental-health/mental-health-anger-management",
-        "https://www.healthline.com/health/mental-health/how-to-control-anger",
-    ],
-    'disgust': [
-        "https://www.psychologytoday.com/us/blog/inside-the-consulting-room/201506/the-psychology-disgust",
-        "https://www.betterhelp.com/advice/how-to/feeling-disgusted-what-it-means-and-what-you-can-do/",
-        "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3192221/",
-        "https://www.psychmechanics.com/psychology-of-disgust/",
-        "https://www.goodtherapy.org/learn-about-therapy/issues/disgust",
-    ],
-    'fear': [
-        "https://www.psychologytoday.com/us/blog/facing-fear",
-        "https://www.helpguide.org/articles/anxiety/how-to-stop-worrying.htm",
-        "https://www.verywellmind.com/how-to-cope-with-fear-and-anxiety-4164111",
-        "https://www.healthline.com/health/how-to-overcome-fear",
-        "https://www.mayoclinic.org/tests-procedures/exposure-therapy/about/pac-20384617",
-    ],
-    'happy': [
-        "https://www.psychologytoday.com/us/basics/happiness",
-        "https://www.verywellmind.com/ways-to-increase-happiness-5194772",
-        "https://www.helpguide.org/articles/mental-health/mental-health-and-wellness.htm",
-        "https://www.healthline.com/health/how-to-be-happy",
-        "https://www.mind.org.uk/information-support/tips-for-everyday-living/happiness/",
-    ],
-    'neutral': [
-        "https://www.psychologytoday.com/us/blog/your-emotional-meter/202202/the-state-of-being-neutral",
-        "https://www.verywellmind.com/is-being-emotionally-numb-good-or-bad-for-your-health-4166129",
-        "https://www.healthline.com/health/emotional-detachment",
-        "https://www.helpguide.org/articles/relationships-communication/emotional-intelligence-eq.htm",
-        "https://www.psychologytoday.com/us/blog/emotional-sobriety/202001/the-power-being-neutral",
-    ],
-    'sad': [
-        "https://www.psychologytoday.com/us/blog/click-here-happiness/201901/how-be-happy-again-13-simple-ways-be-happier",
-        "https://www.verywellmind.com/ways-to-be-happier-when-youre-sad-5194773",
-        "https://www.helpguide.org/articles/depression/coping-with-depression.htm",
-        "https://www.webmd.com/depression/guide/coping-with-depression",
-        "https://www.healthline.com/health/how-to-deal-with-depression",
-    ],
-    'surprised': [
-        "https://www.psychologytoday.com/us/basics/surprise",
-        "https://www.betterhelp.com/advice/how-to/how-to-handle-being-surprised-and-why-we-feel-surprise/",
-        "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3173537/",
-        "https://www.goodtherapy.org/blog/psychpedia/surprise",
-        "https://www.psychologytoday.com/us/blog/hot-thought/201308/surprised-again",
-    ],
+  'angry' : [
+    "https://www.psychologytoday.com/us/basics/anger",
+    "https://www.verywellmind.com/anger-management-4157185",
+    "https://www.healthline.com/health/why-am-i-always-angry",
+    "https://www.nami.org/Blogs/NAMI-Blog/January-2020/The-Role-of-Anger-in-Mental-Health",
+    "https://www.verywellmind.com/anger-management-strategies-4178871",
+    "https://www.psychologytoday.com/us/blog/prescriptions-life/202103/overcoming-fear",
+    "https://www.verywellmind.com/understanding-sadness-4799491",
+    "https://www.psychologytoday.com/us/basics/sadness",
+    "https://www.helpguide.org/articles/grief/coping-with-grief-and-loss.htm",
+   
+ ],
+
+ 'disgust' : [
+    "https://www.psychologytoday.com/us/basics/disgust",
+    "https://www.verywellmind.com/what-is-disgust-2794971",
+    "https://www.verywellmind.com/the-psychology-of-disgust-2671614",
+    "https://www.sciencedaily.com/releases/2017/06/170620141215.htm",
+    "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3712191/",
+    "https://www.psychologytoday.com/us/basics/fear",
+    "https://www.verywellmind.com/what-is-fear-2795237",
+    "https://www.health.harvard.edu/staying-healthy/the-biology-of-fear",
+    "https://www.webmd.com/anxiety-panic/guide/mental-health-fear",
+    "https://adaa.org/understanding-anxiety/facts-statistics"
+ ],
+ 'fear' : [
+    "https://www.psychologytoday.com/us/basics/fear",
+    "https://www.verywellmind.com/what-is-fear-2795237",
+    "https://www.health.harvard.edu/staying-healthy/the-biology-of-fear",
+    "https://www.webmd.com/anxiety-panic/guide/mental-health-fear",
+    "https://adaa.org/understanding-anxiety/facts-statistics",
+    "https://www.psychologytoday.com/us/basics/happiness",
+    "https://www.verywellmind.com/what-is-happiness-4869767",
+    "https://www.helpguide.org/articles/mental-health/the-pursuit-of-happiness.htm",
+    "https://www.healthline.com/health/positive-thinking",
+    "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6258755/"
+ ],
+
+ 'happy' : [
+    "https://www.psychologytoday.com/us/basics/happiness",
+    "https://www.verywellmind.com/what-is-happiness-4869767",
+    "https://www.helpguide.org/articles/mental-health/the-pursuit-of-happiness.htm",
+    "https://www.healthline.com/health/positive-thinking",
+    "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6258755/",
+    "https://www.psychologytoday.com/us/basics/emotional-neutrality",
+    "https://www.verywellmind.com/emotional-neutrality-4772841",
+    "https://www.lifehack.org/289585/8-ways-stay-neutral-your-emotions",
+    "https://www.betterhelp.com/advice/general/why-being-neutral-can-be-beneficial-finding-balance-in-your-emotions/",
+    "https://www.psychologytoday.com/us/blog/emotional-nourishment/201801/the-art-emotional-neutrality"
+ ],
+
+ 'neutral' :[
+    "https://www.psychologytoday.com/us/basics/emotional-neutrality",
+    "https://www.verywellmind.com/emotional-neutrality-4772841",
+    "https://www.lifehack.org/289585/8-ways-stay-neutral-your-emotions",
+    "https://www.betterhelp.com/advice/general/why-being-neutral-can-be-beneficial-finding-balance-in-your-emotions/",
+    "https://www.psychologytoday.com/us/blog/emotional-nourishment/201801/the-art-emotional-neutrality",
+    "https://www.verywellmind.com/understanding-surprise-2795097",
+    "https://www.psychologytoday.com/us/basics/surprise",
+    "https://www.sciencedaily.com/releases/2011/04/110406161651.htm",
+    "https://www.fastcompany.com/3033692/the-power-of-surprise-how-surprise-can-lead-to-creativity-and-innovation"
+   
+   ],
 }
 
 mood_suggestions = {
@@ -592,29 +623,14 @@ mood_suggestions = {
 
 
 
-# @app.get("/content_for/{mood}")
-# async def content_for(mood: AvailableOptions):
-#     if mood == AvailableOptions.angry:
-#         return random.sample(emotions['angry'], 5)
-#     if mood == AvailableOptions.happy:
-#         return random.sample(emotions['happy'], 5)
-#     if mood == AvailableOptions.sad:
-#         return random.sample(emotions['sad'], 5)
-#     if mood == AvailableOptions.fear:
-#         return random.sample(emotions['fear'], 5)
-#     if mood == AvailableOptions.neutral:
-#         return random.sample(emotions['neutral'], 5)
-#     if mood == AvailableOptions.excited:
-#         return random.sample(emotions['excited'], 5)
-#     else:
-#         # Return the full list for other emotions
-#         return emotions.get(mood, [])
-
+#FastApi IMPLEMENTATION
 @app.get("/mood/{mood}", response_model=MoodResponse)
 async def get_mood_content(mood: AvailableOptions):
-    selected_videos = random.sample(emotions[mood.value], min(7, len(emotions[mood.value])))
+   # random.sample(list,k)
+   # random.sample(happy,4)
+    selected_videos = random.sample(emotions[mood.value], min(4, len(emotions[mood.value])))
     selected_suggestions = random.sample(mood_suggestions[mood.value], min(2, len(mood_suggestions[mood.value])))
-    selected_playlists = random.sample(playlists[mood.value], min(7, len(playlists[mood.value])))
+    selected_playlists = random.sample(playlists[mood.value], min(6, len(playlists[mood.value])))
     selected_articles = random.sample(articles[mood.value], min(2, len(articles[mood.value])))
 
     return MoodResponse(
