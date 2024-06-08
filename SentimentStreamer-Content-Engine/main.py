@@ -18,10 +18,11 @@ class AvailableOptions(str, Enum):
 
 class MoodResponse(BaseModel):
     mood: AvailableOptions
+    movie:List[str]
     playlists: List[str]
-    videos: List[str]
     articles:List[str]
     suggestions:List[str]
+    videos: List[str]
     
 
 emotions = {
@@ -323,7 +324,108 @@ emotions = {
     ]}
 
 
+movies = {
+   
 
+
+'angry ': [
+    "https://www.imdb.com/title/tt1392190/",
+    "https://www.imdb.com/title/tt0137523/",
+    "https://www.imdb.com/title/tt0172495/",
+    "https://www.imdb.com/title/tt2911666/",
+    "https://www.imdb.com/title/tt1853728/",
+    "https://www.imdb.com/title/tt0468569/",
+    "https://www.imdb.com/title/tt0110912/",
+    "https://www.imdb.com/title/tt0133093/",
+    "https://www.imdb.com/title/tt0361748/",
+    "https://www.imdb.com/title/tt0266697/",
+    # Add more movies here
+],
+
+'disgust' : [
+    "https://www.imdb.com/title/tt1467304/",
+    "https://www.imdb.com/title/tt0180093/",
+    "https://www.imdb.com/title/tt0066921/",
+    "https://www.imdb.com/title/tt0387564/",
+    "https://www.imdb.com/title/tt0450278/",
+    "https://www.imdb.com/title/tt0870984/",
+    "https://www.imdb.com/title/tt0091064/",
+    "https://www.imdb.com/title/tt0069089/",
+    "https://www.imdb.com/title/tt0073650/",
+    "https://www.imdb.com/title/tt0290673/",
+    # Add more movies here
+],
+
+'fear' : [
+    "https://www.imdb.com/title/tt1457767/",
+    "https://www.imdb.com/title/tt7784604/",
+    "https://www.imdb.com/title/tt0087800/",
+    "https://www.imdb.com/title/tt0070047/",
+    "https://www.imdb.com/title/tt0081505/",
+    "https://www.imdb.com/title/tt5052448/",
+    "https://www.imdb.com/title/tt3235888/",
+    "https://www.imdb.com/title/tt1179904/",
+    "https://www.imdb.com/title/tt2321549/",
+    "https://www.imdb.com/title/tt0298130/",
+    # Add more movies here
+],
+
+'happy': [
+    "https://www.imdb.com/title/tt0109830/",
+    "https://www.imdb.com/title/tt1675434/",
+    "https://www.imdb.com/title/tt0211915/",
+    "https://www.imdb.com/title/tt3783958/",
+    "https://www.imdb.com/title/tt2278388/",
+    "https://www.imdb.com/title/tt0449059/",
+    "https://www.imdb.com/title/tt0454921/",
+    "https://www.imdb.com/title/tt1045658/",
+    "https://www.imdb.com/title/tt1049413/",
+    "https://www.imdb.com/title/tt2096673/",
+    # Add more movies here
+],
+
+'neutral' : [
+    "https://www.imdb.com/title/tt0111161/",
+    "https://www.imdb.com/title/tt0068646/",
+    "https://www.imdb.com/title/tt0108052/",
+    "https://www.imdb.com/title/tt0167260/",
+    "https://www.imdb.com/title/tt0060196/",
+    "https://www.imdb.com/title/tt1375666/",
+    "https://www.imdb.com/title/tt0109830/",
+    "https://www.imdb.com/title/tt0137523/",
+    "https://www.imdb.com/title/tt0133093/",
+    "https://www.imdb.com/title/tt0099685/",
+    # Add more movies here
+],
+
+'sad' : [
+    "https://www.imdb.com/title/tt0108052/",
+    "https://www.imdb.com/title/tt0095327/",
+    "https://www.imdb.com/title/tt0120689/",
+    "https://www.imdb.com/title/tt0180093/",
+    "https://www.imdb.com/title/tt0783233/",
+    "https://www.imdb.com/title/tt0253474/",
+    "https://www.imdb.com/title/tt4034228/",
+    "https://www.imdb.com/title/tt2024544/",
+    "https://www.imdb.com/title/tt1120985/",
+    "https://www.imdb.com/title/tt0388795/",
+    # Add more movies here
+],
+
+'surprise' : [
+    "https://www.imdb.com/title/tt0167404/",
+    "https://www.imdb.com/title/tt0137523/",
+    "https://www.imdb.com/title/tt0114814/",
+    "https://www.imdb.com/title/tt2267998/",
+    "https://www.imdb.com/title/tt0209144/",
+    "https://www.imdb.com/title/tt0364569/",
+    "https://www.imdb.com/title/tt0482571/",
+    "https://www.imdb.com/title/tt1130884/",
+    "https://www.imdb.com/title/tt0114369/",
+    "https://www.imdb.com/title/tt0117381/",
+    # Add more movies here
+],
+}
 
 
 playlists = {
@@ -632,12 +734,14 @@ async def get_mood_content(mood: AvailableOptions):
     selected_suggestions = random.sample(mood_suggestions[mood.value], min(2, len(mood_suggestions[mood.value])))
     selected_playlists = random.sample(playlists[mood.value], min(6, len(playlists[mood.value])))
     selected_articles = random.sample(articles[mood.value], min(2, len(articles[mood.value])))
+    selected_movies = random.sample(movies[mood.value], min(4, len(movies[mood.value])))
 
     return MoodResponse(
         mood=mood,
-        videos=selected_videos,
+        movie=selected_movies,
         playlists=selected_playlists,
         suggestions=selected_suggestions,
-        articles=selected_articles
+        articles=selected_articles,
+        videos=selected_videos,
     )
 
